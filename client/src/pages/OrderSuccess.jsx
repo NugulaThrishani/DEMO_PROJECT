@@ -1,0 +1,8 @@
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+
+export default function OrderSuccess() {
+  const { state } = useLocation();
+  const order = state?.order;
+  return <main className="mx-auto max-w-2xl px-5 py-20 text-center lg:py-28"><div className="relative mx-auto grid h-24 w-24 place-items-center rounded-full bg-butter"><CheckCircle2 size={42} strokeWidth={1.5} className="text-ink" /><span className="absolute -right-2 -top-2 text-xl text-coral">✦</span></div><p className="mt-8 text-xs font-bold uppercase tracking-[.22em] text-coral">It&apos;s official</p><h1 className="mt-3 font-display text-6xl font-semibold leading-none">Your sweet<br /><em className="font-normal">moment is booked.</em></h1><p className="mx-auto mt-6 max-w-md text-sm leading-6 text-ink/60">We&apos;re putting the finishing touches on your order. Pop by the counter soon and we&apos;ll have it waiting.</p><div className="mx-auto mt-8 max-w-sm rounded-3xl border border-ink/10 bg-white p-5 text-left shadow-soft"><div className="flex justify-between text-xs uppercase tracking-wider text-ink/45"><span>Order number</span><span>Pickup order</span></div><p className="mt-2 font-display text-2xl font-semibold">#{order?._id?.slice(-6).toUpperCase() || 'THANKYOU'}</p><div className="mt-4 flex justify-between border-t border-ink/10 pt-4 text-sm"><span>{order?.items?.reduce((sum, item) => sum + item.qty, 0) || 'Your'} treats</span><strong>${order?.total?.toFixed(2) || '—'}</strong></div></div><Link to="/" className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-coral">Back to the counter <ArrowRight size={16} /></Link></main>;
+}
