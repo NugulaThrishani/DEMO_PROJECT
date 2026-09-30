@@ -39,3 +39,7 @@ Open `http://localhost:5173`.
 - `GET /api/health`
 
 The client uses browser geolocation to request nearby shops. If location access is denied, the menu and cart remain available.
+
+## AWS deployment
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for the GitHub Actions pipeline using ECR, App Runner, S3, and CloudFront.
